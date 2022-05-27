@@ -37,7 +37,7 @@
 								"login"
 							]
 						},
-						"description": "StartFragment\n\nTo authenticate yourself with App Upgrade API client, you must log in. To log in, send your email and password in json body and receive a bearer token in response. Then, you then use the bearer token for authentication when sending requests to App Upgrade API endpoints. \n\nEndFrag"
+						"description": "To authenticate yourself with App Upgrade API client, you must log in. To log in, send your email and password in json body and receive a bearer token in response. Then, you then use the bearer token for authentication when sending requests to App Upgrade API endpoints."
 					},
 					"response": []
 				},
@@ -146,7 +146,7 @@
 								"projects"
 							]
 						},
-						"description": "StartFragment\n\nProject is a high level term used in App Upgrade. Project is a umbrella which you will be using to manage the versions for you app.\n\nEndFragment  \n  \n\nTo create a new project send the `name` and `description` in json body to /projects endpoint."
+						"description": "Project is a high level term used in App Upgrade. Project is a umbrella which you will be using to manage the versions for you app.\n\nTo create a new project send the `name` and `description` in json body to /projects endpoint."
 					},
 					"response": []
 				},
@@ -387,7 +387,7 @@
 								"versions"
 							]
 						},
-						"description": "StartFragment\n\nVersion are the record you create to make an app marked for the upgrade.\n\nEndFragment\n\nUse this API to create a new version inside project."
+						"description": "Version are the record you create to make an app marked for the upgrade.\n\nUse this API to create a new version inside project."
 					},
 					"response": []
 				},
@@ -582,7 +582,7 @@
 								}
 							]
 						},
-						"description": "StartFragment\n\nThis API is used for checking the app version is marked for upgrade or not.\n\nEndFragmentStartFragment\n\nThe API will respond with the required checks. If `found` is true that means app is marked for upgrade.\n\nIf `forceUpgrade` is true that means app needs to force the user to update the app. If false than just show a popup to user for upgrade but it’s not mandatory.\n\nEndFragment"
+						"description": "This API is used for checking the app version is marked for upgrade or not.\n\nThe API will respond with the required checks. If `found` is true that means app is marked for upgrade.\n\nIf `forceUpgrade` is true that means app needs to force the user to update the app. If false than just show a popup to user for upgrade but it’s not mandatory."
 					},
 					"response": []
 				}
