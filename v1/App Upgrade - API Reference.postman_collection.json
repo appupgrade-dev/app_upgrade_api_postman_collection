@@ -1,0 +1,626 @@
+{
+	"info": {
+		"_postman_id": "7ea56e25-b445-46c8-bdeb-c0e0fe69037c",
+		"name": "App Upgrade : API Reference",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1238321"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"<EMAIL>\",\r\n    \"password\": \"<PASSWORD>\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://appupgrade.dev/api/v1/auth/login",
+							"protocol": "https",
+							"host": [
+								"appupgrade",
+								"dev"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"login"
+							]
+						},
+						"description": "StartFragment\n\nTo authenticate yourself with App Upgrade API client, you must log in. To log in, send your email and password in json body and receive a bearer token in response. Then, you then use the bearer token for authentication when sending requests to App Upgrade API endpoints. \n\nEndFrag"
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"<NAME>\",\r\n    \"email\": \"<EMAIL>\",\r\n    \"password\": \"<PASSWORD>\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://appupgrade.dev/api/v1/auth/register",
+							"protocol": "https",
+							"host": [
+								"appupgrade",
+								"dev"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"register"
+							]
+						},
+						"description": "To create an account, send the **name**, **email** and **password** to the App Upgrade using the **/**register endpoint. It validates the email and password and then creates a new account if one does not already exist for that **`email`**. The password is processed with a one-way hash and stored in a data volume. Both email and **`password`** are required parameters."
+					},
+					"response": []
+				},
+				{
+					"name": "Forgot Password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"<EMAIL>\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://appupgrade.dev/api/v1/auth/forgot-password",
+							"protocol": "https",
+							"host": [
+								"appupgrade",
+								"dev"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"forgot-password"
+							]
+						},
+						"description": "To get a reset password link send the `email` in json body to `/forgot-password` endpoint. The App Upgrade will send a reset password email if an account exist for that **`email`**."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Projects",
+			"item": [
+				{
+					"name": "CREATE Project",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{AUTH_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"<APP_NAME>\",\r\n    \"description\": \"<APP_DESCRIPTION>\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://appupgrade.dev/api/v1/projects",
+							"protocol": "https",
+							"host": [
+								"appupgrade",
+								"dev"
+							],
+							"path": [
+								"api",
+								"v1",
+								"projects"
+							]
+						},
+						"description": "StartFragment\n\nProject is a high level term used in App Upgrade. Project is a umbrella which you will be using to manage the versions for you app.\n\nEndFragment  \n  \n\nTo create a new project send the `name` and `description` in json body to /projects endpoint."
+					},
+					"response": []
+				},
+				{
+					"name": "GET Projects",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{AUTH_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://appupgrade.dev/api/v1/projects?page=1&limit=10",
+							"protocol": "https",
+							"host": [
+								"appupgrade",
+								"dev"
+							],
+							"path": [
+								"api",
+								"v1",
+								"projects"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								}
+							]
+						},
+						"description": "Returns the list of projects associated with the user. This API is paginated. The query params `page` and `limit` can be provided in query param."
+					},
+					"response": []
+				},
+				{
+					"name": "GET Project by ID",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{AUTH_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://appupgrade.dev/api/v1/projects/{{PROJECT_ID}}",
+							"protocol": "https",
+							"host": [
+								"appupgrade",
+								"dev"
+							],
+							"path": [
+								"api",
+								"v1",
+								"projects",
+								"{{PROJECT_ID}}"
+							]
+						},
+						"description": "Return the project detail for given project id."
+					},
+					"response": []
+				},
+				{
+					"name": "Update Project",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{AUTH_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"<APP_NAME>\",\r\n    \"description\": \"<APP_DESCRIPTION>\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://appupgrade.dev/api/v1/projects/{{PROJECT_ID}}",
+							"protocol": "https",
+							"host": [
+								"appupgrade",
+								"dev"
+							],
+							"path": [
+								"api",
+								"v1",
+								"projects",
+								"{{PROJECT_ID}}"
+							]
+						},
+						"description": "To update an existing project `name` and `description`."
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE Project",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{AUTH_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://appupgrade.dev/api/v1/projects/{{PROJECT_ID}}",
+							"protocol": "https",
+							"host": [
+								"appupgrade",
+								"dev"
+							],
+							"path": [
+								"api",
+								"v1",
+								"projects",
+								"{{PROJECT_ID}}"
+							]
+						},
+						"description": "To delete an existing project."
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE Project API Key",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{AUTH_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"xApiKey\": \"{{CURRENT_PROJECT_API_KEY}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://appupgrade.dev/api/v1/projects/{{PROJECT_ID}}/api-key",
+							"protocol": "https",
+							"host": [
+								"appupgrade",
+								"dev"
+							],
+							"path": [
+								"api",
+								"v1",
+								"projects",
+								"{{PROJECT_ID}}",
+								"api-key"
+							]
+						},
+						"description": "Project API key is used for making version-check API call. Use this API to change the project key (x-api-key). This will create a new x-api-key and the previous x-api-key will stop working.\n\nIt takes project id in param and current xApiKey in json body and will generate a new x-api-key if there is a x-api-key and project id combination is present in the system."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Versions",
+			"item": [
+				{
+					"name": "CREATE Version",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{AUTH_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"appName\": \"Wallpaper app\",\r\n  \"appVersion\": \"1.0.0\",\r\n  \"platform\": \"iOS\",\r\n  \"environment\": \"production\",\r\n  \"message\": \"Please update to continue using the app.\",\r\n  \"project\": \"{{PROJECT_ID}}\",\r\n  \"forceUpgrade\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://appupgrade.dev/api/v1/projects/{{PROJECT_ID}}/versions",
+							"protocol": "https",
+							"host": [
+								"appupgrade",
+								"dev"
+							],
+							"path": [
+								"api",
+								"v1",
+								"projects",
+								"{{PROJECT_ID}}",
+								"versions"
+							]
+						},
+						"description": "StartFragment\n\nVersion are the record you create to make an app marked for the upgrade.\n\nEndFragment\n\nUse this API to create a new version inside project."
+					},
+					"response": []
+				},
+				{
+					"name": "GET Versions",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{AUTH_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://appupgrade.dev/api/v1/projects/{{PROJECT_ID}}/versions?page=1&limit=10",
+							"protocol": "https",
+							"host": [
+								"appupgrade",
+								"dev"
+							],
+							"path": [
+								"api",
+								"v1",
+								"projects",
+								"{{PROJECT_ID}}",
+								"versions"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								}
+							]
+						},
+						"description": "To get the list of versions for a given project. This API is paginated and `page` and `limit` query params can be provided."
+					},
+					"response": []
+				},
+				{
+					"name": "GET Version by ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{AUTH_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://appupgrade.dev/api/v1/projects/{{PROJECT_ID}}/versions/{{VERSION_ID}}",
+							"protocol": "https",
+							"host": [
+								"appupgrade",
+								"dev"
+							],
+							"path": [
+								"api",
+								"v1",
+								"projects",
+								"{{PROJECT_ID}}",
+								"versions",
+								"{{VERSION_ID}}"
+							]
+						},
+						"description": "Returns the version details."
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE Version",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{AUTH_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"appName\": \"Wallpaper app\",\r\n  \"appVersion\": \"1.0.0\",\r\n  \"platform\": \"iOS\",\r\n  \"environment\": \"production\",\r\n  \"message\": \"Please update to continue using the app.\",\r\n  \"project\": \"{{PROJECT_ID}}\",\r\n  \"forceUpgrade\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://appupgrade.dev/api/v1/projects/{{PROJECT_ID}}/versions/{{VERSION_ID}}",
+							"protocol": "https",
+							"host": [
+								"appupgrade",
+								"dev"
+							],
+							"path": [
+								"api",
+								"v1",
+								"projects",
+								"{{PROJECT_ID}}",
+								"versions",
+								"{{VERSION_ID}}"
+							]
+						},
+						"description": "Use this API to update version details."
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE Version",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{AUTH_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://appupgrade.dev/api/v1/projects/{{PROJECT_ID}}/versions/{{VERSION_ID}}",
+							"protocol": "https",
+							"host": [
+								"appupgrade",
+								"dev"
+							],
+							"path": [
+								"api",
+								"v1",
+								"projects",
+								"{{PROJECT_ID}}",
+								"versions",
+								"{{VERSION_ID}}"
+							]
+						},
+						"description": "Use this API to delete the version."
+					},
+					"response": []
+				},
+				{
+					"name": "Check Version",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{PROJECT_API_KEY}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://appupgrade.dev/api/v1/versions/check?app_name=Wallpaper app&app_version=1.0.0&platform=android&environment=production",
+							"protocol": "https",
+							"host": [
+								"appupgrade",
+								"dev"
+							],
+							"path": [
+								"api",
+								"v1",
+								"versions",
+								"check"
+							],
+							"query": [
+								{
+									"key": "app_name",
+									"value": "Wallpaper app"
+								},
+								{
+									"key": "app_version",
+									"value": "1.0.0"
+								},
+								{
+									"key": "platform",
+									"value": "android"
+								},
+								{
+									"key": "environment",
+									"value": "production"
+								}
+							]
+						},
+						"description": "StartFragment\n\nThis API is used for checking the app version is marked for upgrade or not.\n\nEndFragmentStartFragment\n\nThe API will respond with the required checks. If `found` is true that means app is marked for upgrade.\n\nIf `forceUpgrade` is true that means app needs to force the user to update the app. If false than just show a popup to user for upgrade but it’s not mandatory.\n\nEndFragment"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "GET user",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{AUTH_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://appupgrade.dev/api/v1/users/me",
+							"protocol": "https",
+							"host": [
+								"appupgrade",
+								"dev"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"me"
+							]
+						},
+						"description": "To get the authenticated user details."
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
